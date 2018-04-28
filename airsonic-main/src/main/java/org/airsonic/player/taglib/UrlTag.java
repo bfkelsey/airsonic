@@ -19,7 +19,6 @@
  */
 package org.airsonic.player.taglib;
 
-import org.airsonic.player.filter.ParameterDecodingFilter;
 import org.airsonic.player.util.StringUtil;
 import org.apache.commons.lang.CharUtils;
 import org.apache.taglibs.standard.tag.common.core.UrlSupport;
@@ -30,7 +29,6 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.BodyTagSupport;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -54,7 +52,7 @@ import java.util.List;
  */
 public class UrlTag extends BodyTagSupport {
 
-    private String DEFAULT_ENCODING = "Utf8Hex";
+    public static final String DEFAULT_ENCODING = "Utf8Hex";
     private static final Logger LOG = LoggerFactory.getLogger(UrlTag.class);
 
     private String var;
@@ -98,7 +96,7 @@ public class UrlTag extends BodyTagSupport {
                 try {
                     result.append(parameter.getName());
                     if (isUtf8Hex() && !isAsciiAlphaNumeric(parameter.getValue())) {
-                        result.append(ParameterDecodingFilter.PARAM_SUFFIX);
+                        result.append(DEFAULT_ENCODING);
                     }
 
                     result.append('=');

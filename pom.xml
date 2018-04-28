@@ -78,6 +78,7 @@
         <module>subsonic-rest-api</module>
         <module>airsonic-sonos-api</module>
         <module>airsonic-main</module>
+        <module>airsonic-site</module>
     </modules>
 
     <dependencyManagement>
